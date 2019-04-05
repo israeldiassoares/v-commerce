@@ -1,6 +1,10 @@
 new Vue({
     el: '#app',
     data: {
+        isShowingCart: false,
+        cart:{
+            items: []
+        },
         products: [
             {
                 id: 1,
@@ -45,6 +49,26 @@ new Vue({
                 inStock: 81
             }
         ]
+    },
+    methods: {
+      addProductToCart: function(product){
+          this.cart.items.push({
+              product: product,
+              quantity: 1
+          });
+          product.inStock--;
+      }
+
+    },
+    computed: {
+      cartTotal: function () {
+          let total = 0;
+
+          this.cart.items.forEach(function(item) {
+              total += item.quantity * item.product.price
+          });
+          return total;
+      }
     },
     filters: {
         currency: function (value) {
