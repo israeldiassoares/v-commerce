@@ -90,6 +90,14 @@ new Vue({
       if (index !== -1) {
         this.cart.items.splice(index, 1);
       }
+    },
+    checkout: function () {
+      if (confirm('Are you sure that you want purchase these products? ')) {
+        this.cart.items.forEach(function (item) {
+          item.product.inStock += item.quantity;
+        });
+        this.cart.items = [];
+      }
     }
 
   },

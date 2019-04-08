@@ -52,7 +52,6 @@
         </div>
         <div v-else>
             <h1>Cart</h1>
-            <p>The cart will be displayed here.</p>
             <table v-if="cart.items.length > 0" class="table table-striped">
                 <thead>
                 <tr>
@@ -96,7 +95,7 @@
                 <tr>
                     <td colspan="2">
                     <td>
-                        <button class="btn btn-success">Checkout</button>
+                        <button class="btn btn-success" @click="checkout">Checkout</button>
                     </td>
                 </tr>
                 </tbody>
